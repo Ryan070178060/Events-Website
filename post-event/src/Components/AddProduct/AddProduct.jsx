@@ -30,7 +30,7 @@ const AddProduct = () => {
     formData.append('product', image);
 
     try {
-      const response = await fetch('https://events-website.onrender.com//upload', {
+      const response = await fetch('https://events-website.onrender.com/upload', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
