@@ -15,12 +15,12 @@ const ShopContextProvider=(props) => {
     const [cartItems,setCartItems]= useState(getDefaultCart());
 
     useEffect(() => {
-        fetch('https://events-website.onrender.com//allproducts')
+        fetch('https://events-website.onrender.com/allproducts')
             .then((response) => response.json())
             .then((data) => setAll_product(data))
     
         if (localStorage.getItem('auth-token')) {
-            fetch('https://events-website.onrender.com//getcart', {
+            fetch('https://events-website.onrender.com/getcart', {
     method: 'POST',
     headers: {
         Accept: 'application/json', // Corrected Accept header
@@ -39,7 +39,7 @@ const ShopContextProvider=(props) => {
     const addToCart =(itemId) =>{
         setCartItems((prev) =>({...prev,[itemId]:prev[itemId]+1}) );
         if (localStorage.getItem('auth-token')) {
-            fetch('https://events-website.onrender.com//addtocart', {
+            fetch('https://events-website.onrender.com/addtocart', {
               method: 'POST',
               headers: {
                 Accept: 'application/formData',
@@ -57,7 +57,7 @@ const ShopContextProvider=(props) => {
     const removeFromCart =(itemId) =>{
         setCartItems((prev) =>({...prev,[itemId]:prev[itemId]-1}) )
         if(localStorage.getItem('auth-token')){
-            fetch('https://events-website.onrender.com//removefromcart', {
+            fetch('https://events-website.onrender.com/removefromcart', {
               method: 'POST',
               headers: {
                 Accept: 'application/formData',

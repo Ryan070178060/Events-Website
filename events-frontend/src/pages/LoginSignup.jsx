@@ -19,7 +19,7 @@ const LoginSignup = () => {
   const login =async () =>{
     console.log("Login Function Executed",formData);
     let responseData;
-    await fetch('https://events-website.onrender.com//login',{
+    await fetch('https://events-website.onrender.com/login',{
       method:'POST',
       headers:{
         Accept: 'application/form-data',
@@ -41,7 +41,7 @@ const LoginSignup = () => {
   const signup =async () =>{
     console.log("Signup Functin Executed",formData);
     let responseData;
-    await fetch('https://events-website.onrender.com//signup',{
+    await fetch('https://events-website.onrender.com/signup',{
       method:'POST',
       headers:{
         Accept: 'application/form-data',
