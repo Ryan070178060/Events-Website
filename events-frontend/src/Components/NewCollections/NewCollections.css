@@ -4,11 +4,11 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
-    background:linear-gradient(rgb(213, 255, 216) 0%, rgb(212, 159, 238) 90% 100%);
+    background:linear-gradient(rgb(21, 22, 21) 0%, rgb(7, 4, 8) 90% 100%);
 
 }
 .new_collections h1{
-    color: black;
+    color: rgb(250, 23, 23);
     font-size: 50px;
     font-weight: 600;
 }
@@ -16,7 +16,7 @@
     width: 200px;
     height: 6px;
     border-radius: 10px;
-    background: black;
+    background: rgb(231, 21, 21);
 }
 .collections{
     display: grid;

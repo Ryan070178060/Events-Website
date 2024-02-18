@@ -9,17 +9,17 @@
     padding: 0px 140px;
     margin-top: 30px;
     margin-bottom: 150px;
-    background: linear-gradient(rgb(213, 255, 216) 0%, rgb(212, 159, 238) 90% 100%);
+    background: linear-gradient(rgb(21, 22, 21) 0%, rgb(21, 13, 26) 90% 100%);
     gap: 30px;
 }
 .newsletter h1{
-    color: black;
+    color: rgb(238, 10, 10);
     font-size: 55px;
     font-weight: 600;
 
 }
 .newsletter p{
-    color: black;
+    color: rgb(223, 0, 0);
     font-size: 20px;
 
 }
