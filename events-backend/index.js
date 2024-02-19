@@ -94,7 +94,6 @@ app.post("/upload", upload.single('product'), (req, res) => {
 });
 
 // Create API for adding products
-// Create API for adding products
 app.post('/addproduct', async (req, res) => {
   try {
     const products = await Product.find({});
@@ -103,7 +102,7 @@ app.post('/addproduct', async (req, res) => {
     const newProduct = new Product({
       id,
       name: req.body.name,
-      image: req.body.imageUrl, // Use the imageUrl passed from the /upload endpoint
+      image: req.body.image, // Use the imageUrl passed from the /upload endpoint
       category: req.body.category,
       location_det: req.body.location_det,
       date_det: req.body.date_det,

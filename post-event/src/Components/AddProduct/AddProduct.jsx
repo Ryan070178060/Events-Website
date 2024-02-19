@@ -22,52 +22,45 @@ const AddProduct = () => {
 
   const addProduct = async () => {
     console.log('Submitting product details:', productDetails);
-  
+
     let responseData;
     let product = { ...productDetails };
-  
+
     let formData = new FormData();
     formData.append('product', image);
-  
+
     try {
-      const uploadResponse = await fetch('https://events-website.onrender.com/upload', {
+      const response = await fetch('https://events-website.onrender.com/upload', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
         },
         body: formData,
       });
-  
-      responseData = await uploadResponse.json();
-      console.log('Response from image upload:', responseData);
-  
-      if (responseData && responseData.success) {
-        product.image = responseData.image_url;
-        console.log('Updated product details:', product);
-  
-        const addProductResponse = await fetch('https://events-website.onrender.com/addproduct', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(product),
-        });
-  
-        const addProductData = await addProductResponse.json();
-        console.log('Response from adding product:', addProductData);
-  
-        if (addProductData && addProductData.success) {
-          alert("Product Added");
-        } else {
-          alert("Failed to add product");
-        }
-      }
+
+      responseData = await response.json();
+      console.log('Response from server:', responseData);
     } catch (error) {
       console.error('Error during fetch:', error);
       // Handle the error as needed, e.g., display an error message to the user
     }
+
+    if (responseData && responseData.success) {
+      product.image = responseData.image_url;
+      console.log('Updated product details:', product);
+      await fetch('https://events-website.onrender.com/addproduct',{
+        method:'POST',
+        headers:{
+            Accept:'application/json',
+            'Content-Type':'application/json',
+        },
+        body:JSON.stringify(product),
+      }).then((resp)=>resp.json()).then((data)=>{
+        data.success?alert("Product Added"):alert("Failed")
+      })
+    }
   };
+
   
 
   const handleSubmit = (e) => {
