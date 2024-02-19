@@ -10,10 +10,10 @@ const Item = (props) => {
         <p>{props.name}</p>
         <div className="item-prices">
             <div className="item-price-new">
-                Ksh {props.location_det}
+                Location: {props.location_det}
             </div>
             <div className="item-price-old">
-                Ksh {props.date_det}
+                Date: {props.date_det}
             </div>
         </div>
     </div>
