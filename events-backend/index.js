@@ -56,12 +56,12 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  new_price: {
-    type: Number,
+  location_det: {
+    type: String,
     required: true,
   },
-  old_price: {
-    type: Number,
+  date_det: {
+    type: Date,
     required: true,
   },
   date: {
@@ -83,12 +83,17 @@ app.get("/", (req, res) => {
 
 // Upload Endpoint for images
 app.post("/upload", upload.single('product'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ success: false, error: "No file uploaded" });
+  }
+
   res.json({
-    success: 1,
-    image_url: `https://events-website.onrender.com/images/${req.file.filename}`
+    success: true,
+    imageUrl: `https://events-website.onrender.com/images/${req.file.filename}`
   });
 });
 
+// Create API for adding products
 // Create API for adding products
 app.post('/addproduct', async (req, res) => {
   try {
@@ -98,10 +103,10 @@ app.post('/addproduct', async (req, res) => {
     const newProduct = new Product({
       id,
       name: req.body.name,
-      image: req.body.image,
+      image: req.body.imageUrl, // Use the imageUrl passed from the /upload endpoint
       category: req.body.category,
-      new_price: req.body.new_price,
-      old_price: req.body.old_price,
+      location_det: req.body.location_det,
+      date_det: req.body.date_det,
     });
 
     await newProduct.save();
@@ -116,6 +121,7 @@ app.post('/addproduct', async (req, res) => {
     res.status(500).json({ success: false, error: "Internal Server Error" });
   }
 });
+
 
 // Create API for deleting products
 app.post('/removeproduct', async (req, res) => {
