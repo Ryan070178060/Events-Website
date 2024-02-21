@@ -51,6 +51,8 @@ const AddProduct = () => {
       await fetch('https://events-website.onrender.com/addproduct',{
         method:'POST',
         headers:{
+          Accept:'application/json',
+            'Content-Type':'application/json',
           
         },
         body:JSON.stringify(product),
