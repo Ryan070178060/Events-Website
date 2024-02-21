@@ -51,9 +51,8 @@ const AddProduct = () => {
       await fetch('https://events-website.onrender.com/addproduct',{
         method:'POST',
         headers:{
-          Accept:'application/json',
+            Accept:'application/json',
             'Content-Type':'application/json',
-          
         },
         body:JSON.stringify(product),
       }).then((resp)=>resp.json()).then((data)=>{
@@ -61,8 +60,6 @@ const AddProduct = () => {
       })
     }
   };
-
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,20 +75,20 @@ const AddProduct = () => {
         </div>
         <div className="addproduct-price">
           <div className="addproduct-itemfield">
-            <p>Date</p>
+            <p>Price</p>
             <input value={productDetails.old_price} onChange={changeHandler} type="text" name='old_price' placeholder='Type here' />
           </div>
           <div className="addproduct-itemfield">
-            <p>Location Details</p>
+            <p>Offer Price</p>
             <input value={productDetails.new_price} onChange={changeHandler} type="text" name='new_price' placeholder='Type here' />
           </div>
         </div>
         <div className="addproduct-itemfield">
           <p>Product Category</p>
           <select value={productDetails.category} onChange={changeHandler} name="category" className='add-product-selector'>
-            <option value="women">Events</option>
-            <option value="men">Parties</option>
-            <option value="kid">Kids Events</option>
+            <option value="women">Women</option>
+            <option value="men">Men</option>
+            <option value="kid">Kids</option>
           </select>
         </div>
         <div className="addproduct-itemfield">

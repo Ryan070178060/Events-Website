@@ -83,13 +83,9 @@ app.get("/", (req, res) => {
 
 // Upload Endpoint for images
 app.post("/upload", upload.single('product'), (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ success: false, error: "No file uploaded" });
-  }
-
   res.json({
-    success: true,
-    imageUrl: `https://events-website.onrender.com/images/${req.file.filename}`
+    success: 1,
+    image_url: `https://events-website.onrender.com/images/${req.file.filename}`
   });
 });
 
@@ -102,7 +98,7 @@ app.post('/addproduct', async (req, res) => {
     const newProduct = new Product({
       id,
       name: req.body.name,
-      image: req.body.image, // Use the imageUrl passed from the /upload endpoint
+      image: req.body.image,
       category: req.body.category,
       new_price: req.body.new_price,
       old_price: req.body.old_price,
@@ -120,7 +116,6 @@ app.post('/addproduct', async (req, res) => {
     res.status(500).json({ success: false, error: "Internal Server Error" });
   }
 });
-
 
 // Create API for deleting products
 app.post('/removeproduct', async (req, res) => {
