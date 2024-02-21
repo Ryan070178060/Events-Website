@@ -56,11 +56,11 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  location_det: {
+  new_price: {
     type: String,
     required: true,
   },
-  date_det: {
+  old_price: {
     type: String,
     required: true,
   },
@@ -104,8 +104,8 @@ app.post('/addproduct', async (req, res) => {
       name: req.body.name,
       image: req.body.image, // Use the imageUrl passed from the /upload endpoint
       category: req.body.category,
-      location_det: req.body.location_det,
-      date_det: req.body.date_det,
+      new_price: req.body.new_price,
+      old_price: req.body.old_price,
     });
 
     await newProduct.save();

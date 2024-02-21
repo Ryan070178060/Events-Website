@@ -10,10 +10,10 @@ const Item = (props) => {
         <p>{props.name}</p>
         <div className="item-prices">
             <div className="item-price-new">
-                Location: {props.location_det}
+                Location: {props.new_price}
             </div>
             <div className="item-price-old">
-                Date: {props.date_det}
+                Date: {props.old_price}
             </div>
         </div>
     </div>
