@@ -48,11 +48,10 @@ const AddProduct = () => {
     if (responseData && responseData.success) {
       product.image = responseData.image_url;
       console.log('Updated product details:', product);
-      await fetch(`https://events-website.onrender.com/addproduct`,{
+      await fetch('https://events-website.onrender.com/addproduct',{
         method:'POST',
         headers:{
-            Accept:'application/json',
-            'Content-Type':'application/json',
+          
         },
         body:JSON.stringify(product),
       }).then((resp)=>resp.json()).then((data)=>{
