@@ -57,11 +57,11 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   location_det: {
-    type: Number,
+    type: String,
     required: true,
   },
   date_det: {
-    type: Number,
+    type: Date,
     required: true,
   },
   date: {
