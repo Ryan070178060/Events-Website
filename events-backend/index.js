@@ -61,7 +61,7 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   date_det: {
-    type: Date,
+    type: String,
     required: true,
   },
   date: {
