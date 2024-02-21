@@ -56,11 +56,11 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  new_price: {
+  location_det: {
     type: Number,
     required: true,
   },
-  old_price: {
+  date_det: {
     type: Number,
     required: true,
   },
@@ -100,8 +100,8 @@ app.post('/addproduct', async (req, res) => {
       name: req.body.name,
       image: req.body.image,
       category: req.body.category,
-      new_price: req.body.new_price,
-      old_price: req.body.old_price,
+      location_det: req.body.location_det,
+      date_det: req.body.date_det,
     });
 
     await newProduct.save();

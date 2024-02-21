@@ -32,8 +32,8 @@ const ProductDisplay = (props) => {
                     <p>(122)</p>
                 </div>
                 <div className="productdisplay-right-price">
-                    <div className="productdisplay-right-price-old">Ksh {product.old_price}</div>
-                    <div className="productdisplay-right-price-new">Ksh {product.new_price}</div>
+                    <div className="productdisplay-right-price-old">Ksh {product.date_det}</div>
+                    <div className="productdisplay-right-price-new">Ksh {product.location_det}</div>
                 </div>
                 <div className="productdisplay-right-description">
                     A lightweight visually knitted pullover shirt with close fitting.
