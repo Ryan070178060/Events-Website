@@ -32,24 +32,24 @@ const ProductDisplay = (props) => {
                     <p>(122)</p>
                 </div>
                 <div className="productdisplay-right-price">
-                    <div className="productdisplay-right-price-old">Ksh {product.date_det}</div>
-                    <div className="productdisplay-right-price-new">Ksh {product.location_det}</div>
+                    <div className="productdisplay-right-price-old">Date {product.date_det}</div>
+                    <div className="productdisplay-right-price-new">location {product.location_det}</div>
                 </div>
                 <div className="productdisplay-right-description">
-                    A lightweight visually knitted pullover shirt with close fitting.
+                    Come celebrate life with us, life os for the living.
                 </div>
                 <div className="productdisplay-right-size">
-                    <h1>Select size</h1>
+                    <h1>Select Ticket</h1>
                     <div className="productdisplay-right-sizes">
-                        <div>S</div>
-                        <div>M</div>
-                        <div>L</div>
-                        <div>XL</div>
-                        <div>XXL</div>
+                        <div>R</div>
+                        <div>VIP</div>
+                        <div>VVIP</div>
+                        <div>Boss</div>
+                        <div>Bazu</div>
                     </div>
                 </div>
-                <button onClick={()=>{addToCart(product.id)}}>Add To Cart</button>
-                <p className="productdisplay-right-category"><span>Category :</span>Women, T-shirt, Crop top</p>
+                <button onClick={()=>{addToCart(product.id)}}>Book now</button>
+                <p className="productdisplay-right-category"><span>Category :</span>VIP,VVIP, Regular</p>
                 <p className="productdisplay-right-category"><span>Tags :</span>Model, Latest</p>
             </div>
         </div>

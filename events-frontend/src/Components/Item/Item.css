@@ -7,13 +7,14 @@
 }
 .item p{
     margin: 6px 0px;
+    background-color: gold;
 }
 .item-prices{
     display: flex;
     gap: 20px;
 }
 .item-price-new{
-    color: darkgreen;
+    color: rgb(11, 252, 11);
     font-size: 18px;
     font-weight: 600;
 }
