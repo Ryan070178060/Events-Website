@@ -7,7 +7,7 @@
 }
 .item p{
     margin: 6px 0px;
-    background-color: gold;
+    color: bisque;
 }
 .item-prices{
     display: flex;
