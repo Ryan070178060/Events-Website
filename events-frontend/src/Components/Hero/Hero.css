@@ -1,7 +1,7 @@
 .hero{
     height: 100vh;
     align-items: center;
-    background:linear-gradient(black rgb(11, 11, 26) rgb(9, 54, 9));
+    background:linear-gradient(black rgb(36, 11, 3) rgb(9, 54, 9));
     background-size: cover;
     background-position: center; 
     display: flex;
