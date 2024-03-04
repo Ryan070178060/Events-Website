@@ -21,9 +21,8 @@ const ShopContextProvider=(props) => {
     
         if (localStorage.getItem('auth-token')) {
             fetch('https://events-website.onrender.com/getcart', {
-                mode: 'no-cors',
-    method: 'POST',
-    headers: {
+                method: 'POST',
+                headers: {
         Accept: 'application/json', // Corrected Accept header
         'auth-token': `${localStorage.getItem('auth-token')}`,
         'Content-Type': 'application/json',
