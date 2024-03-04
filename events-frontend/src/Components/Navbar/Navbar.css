@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-around;
     padding: 16px;
-    background: black;
+    background: rgb(189, 125, 125);
     box-shadow: 0 1px 3px  -2px black;
     align-items: center;
     height: 10vh;
