@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true })); // Added this line
 
 // Database connection with MongoDB
 
-mongoose.connect("mongodb+srv://reezyevents:reezy255@cluster1.2cnme39.mongodb.net/events", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://reezyevents:reezy255@cluster1.2cnme39.mongodb.net/Events?retryWrites=true&w=majority&appName=Cluster1", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to MongoDB");
   })
