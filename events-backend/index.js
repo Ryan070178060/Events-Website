@@ -8,16 +8,27 @@ const jwt = require('jsonwebtoken');
 const app = express();
 const port = 5000;
 
-var corsOptions = {
-  origin: "http://localhost:3000"
+// Define the allowed origins
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://events-website.onrender.com"
+];
+
+// Configure CORS options
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      // Allow requests from the specified origin
+      callback(null, true);
+    } else {
+      // Block requests from other origins
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
 };
-
-app.use(cors(corsOptions));
-app.use(express.json());
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // Added this line
-
 // Database connection with MongoDB
 
 mongoose.connect("mongodb+srv://reezyevents:reezy255@cluster1.2cnme39.mongodb.net/Events?retryWrites=true&w=majority&appName=Cluster1", { useNewUrlParser: true, useUnifiedTopology: true })
