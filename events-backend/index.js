@@ -31,13 +31,8 @@ const corsOptions = {
 };
 // Database connection with MongoDB
 
-mongoose.connect("mongodb+srv://reezyevents:reezy255@cluster1.2cnme39.mongodb.net/Events?retryWrites=true&w=majority&appName=Cluster1", { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((error) => {
-    console.error("Error connecting to MongoDB:", error);
-  });
+mongoose.connect(process.env.MONGO_URI,{useUnifiedTopology: true, useNewUrlParser: true});
+
 //cors middleware
   app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
