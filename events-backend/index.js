@@ -8,6 +8,11 @@ const jwt = require('jsonwebtoken');
 const app = express();
 const port = 5000;
 
+var corsOptions = {
+  origin: "http://localhost:3000"
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cors());
 app.use(express.json());
@@ -22,6 +27,10 @@ mongoose.connect("mongodb+srv://reezyevents:reezy255@cluster1.2cnme39.mongodb.ne
   .catch((error) => {
     console.error("Error connecting to MongoDB:", error);
   });
+//cors middleware
+  app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+  }) 
 
 
 // Image Storage Engine

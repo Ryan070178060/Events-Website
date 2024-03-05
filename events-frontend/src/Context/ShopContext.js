@@ -40,17 +40,17 @@ const ShopContextProvider=(props) => {
         setCartItems((prev) =>({...prev,[itemId]:prev[itemId]+1}) );
         if (localStorage.getItem('auth-token')) {
             fetch('https://events-website.onrender.com/addtocart', {
-                mode: 'no-cors',
-              method: 'POST',
-              headers: {
-                Accept: 'application/formData',
-                'auth-token': `${localStorage.getItem('auth-token')}`,
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ itemId: itemId }),
-            })
-            .then((response) => response.json())
-            .then((data) => console.log(data));
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'auth-token': `${localStorage.getItem('auth-token')}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ itemId: itemId }),
+})
+.then((response) => response.json())
+.then((data) => console.log(data));
+
           }
           
 
@@ -59,7 +59,6 @@ const ShopContextProvider=(props) => {
         setCartItems((prev) =>({...prev,[itemId]:prev[itemId]-1}) )
         if(localStorage.getItem('auth-token')){
             fetch('https://events-website.onrender.com/removefromcart', {
-            mode: 'no-cors',
               method: 'POST',
               headers: {
                 Accept: 'application/formData',
