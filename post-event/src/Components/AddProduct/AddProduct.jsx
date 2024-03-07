@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import upload_area from '../../assets/upload_area.svg';
+import uploadArea from '../../assets/upload_area.svg';
 import './AddProduct.css';
 
 const AddProduct = () => {
   const [image, setImage] = useState(null);
   const [productDetails, setProductDetails] = useState({
     name: "",
-    image: "",
     category: "women",
     location_det: "",
     date_det: ""
@@ -23,41 +22,39 @@ const AddProduct = () => {
   const addProduct = async () => {
     console.log('Submitting product details:', productDetails);
 
-    let responseData;
-    let product = { ...productDetails };
-
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('product', image);
 
     try {
       const response = await fetch('https://events-website.onrender.com/upload', {
         method: 'POST',
-        headers: {
-          Accept: 'application/json',
-        },
         body: formData,
       });
 
-      responseData = await response.json();
+      const responseData = await response.json();
       console.log('Response from server:', responseData);
+
+      if (response.ok && responseData.success) {
+        const updatedProduct = { ...productDetails, image: responseData.image_url };
+        console.log('Updated product details:', updatedProduct);
+        
+        const addProductResponse = await fetch('https://events-website.onrender.com/addproduct', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedProduct),
+        });
+
+        const data = await addProductResponse.json();
+        data.success ? alert("Product Added") : alert("Failed");
+      } else {
+        throw new Error(responseData.message || 'Failed to upload product image');
+      }
     } catch (error) {
       console.error('Error during fetch:', error);
-      // Handle the error as needed, e.g., display an error message to the user
-    }
-
-    if (responseData && responseData.success) {
-      product.image = responseData.image_url;
-      console.log('Updated product details:', product);
-      await fetch('https://events-website.onrender.com/addproduct',{
-        method:'POST',
-        headers:{
-            Accept:'application/json',
-            'Content-Type':'application/json',
-        },
-        body:JSON.stringify(product),
-      }).then((resp)=>resp.json()).then((data)=>{
-        data.success?alert("Product Added"):alert("Failed")
-      })
+      alert("An error occurred while adding the product. Please try again later.");
     }
   };
 
@@ -93,7 +90,7 @@ const AddProduct = () => {
         </div>
         <div className="addproduct-itemfield">
           <label htmlFor="file-input">
-            <img src={image ? URL.createObjectURL(image) : upload_area} className='addproduct-thumnail-img' alt="" />
+            <img src={image ? URL.createObjectURL(image) : uploadArea} className='addproduct-thumnail-img' alt="" />
           </label>
           <input onChange={imageHandler} type="file" name='image' id='file-input' hidden />
         </div>

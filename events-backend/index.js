@@ -4,34 +4,22 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const jwt = require('jsonwebtoken');
-
+require('dotenv').config();
 const app = express();
 const port = 5000;
 
-// Define the allowed origins
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://events-website.onrender.com"
-];
+app.use(express.static('build', 'dist')
 
-// Configure CORS options
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      // Allow requests from the specified origin
-      callback(null, true);
-    } else {
-      // Block requests from other origins
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-};
+);
+
+
 // Database connection with MongoDB
 
-mongoose.connect(process.env.MONGO_URI,{useUnifiedTopology: true, useNewUrlParser: true});
+const conn = mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
 
 //cors middleware
   app.use((req, res, next) => {
