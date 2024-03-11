@@ -2,15 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const path = require("path");
-const cors = require("cors");
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const app = express();
 const port = 5000;
-
-app.use(express.static('build', 'dist')
-
-);
 
 
 // Database connection with MongoDB
@@ -19,12 +14,6 @@ const conn = mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-
-
-//cors middleware
-  app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
-  }) 
 
 
 // Image Storage Engine
