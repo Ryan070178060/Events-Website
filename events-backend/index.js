@@ -8,9 +8,9 @@ const app = express();
 const cors = require('cors');
 const port = 3000;
 
-const corsOptions = {
-  origin: 'https://ryans-events-app.onrender.com'
-};
+//const corsOptions = {
+  //origin: 'https://ryans-events-app.onrender.com'
+//};
 
 app.use(cors(corsOptions));
 // Database connection with MongoDB
