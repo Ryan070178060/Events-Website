@@ -5,9 +5,14 @@ const path = require("path");
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const app = express();
+const cors = require('cors');
 const port = 3000;
 
+const corsOptions = {
+  origin: 'https://ryans-events-app.onrender.com'
+};
 
+app.use(cors(corsOptions));
 // Database connection with MongoDB
 
 const conn = mongoose.connect(process.env.MONGO_URI, {
