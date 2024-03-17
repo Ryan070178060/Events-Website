@@ -5,7 +5,7 @@ const path = require("path");
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const app = express();
-const port = 5000;
+const port = 3000;
 
 
 // Database connection with MongoDB

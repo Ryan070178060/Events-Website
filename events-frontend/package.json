@@ -1,7 +1,6 @@
 {
   "name": "events-frontend",
   "version": "0.1.0",
-  "proxy": "https://events-website.onrender.com",
   "private": true,
   "dependencies": {
     "@heroicons/react": "^2.1.1",
